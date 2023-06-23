@@ -1,0 +1,41 @@
+14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+ 
+
+Example 1:
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+Example 2:
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+
+class Solution {
+
+    /**
+     * @param String[] $strs
+     * @return String
+     */
+    function longestCommonPrefix($strs) {
+        $result = '';
+
+        for($i = 0; $i < strlen($strs[0]); $i++) {
+            $result .= $strs[0][$i];
+            foreach($strs as $item) {
+                if(substr($item, 0, strlen($result)) == $result) {
+                    continue;
+                } else {
+                    return(substr($result, 0, -1));
+                }
+            }
+        }
+
+        return $result;
+    }
+}
